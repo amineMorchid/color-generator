@@ -34,12 +34,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Color randomColor = generateRandomColor();
+  Color randomShadowColor = generateRandomColor();
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.amber,
-      // This trailing comma makes auto-formatting nicer for build methods.
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          randomColor = generateRandomColor();
+          randomShadowColor = generateRandomColor();
+        });
+      },
+      child: Scaffold(
+        backgroundColor: randomColor,
+        body: const Center(
+          child: Text("Hello World",
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w300,
+                  letterSpacing: 2.0)),
+        ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
